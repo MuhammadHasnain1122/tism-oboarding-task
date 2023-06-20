@@ -1,0 +1,27 @@
+[
+    {
+      "type": "TEXTAREA",
+      "id": "notes",
+      "label": "Notes",
+      "value":""
+    
+    },
+      {
+        "type": "INPUT",
+        "inputType": "text",
+        "id": "text",
+        "placeholder": "Text"
+      },
+      {
+        "type": "INPUT",
+        "inputType": "text",
+        "id": "text1"
+      },
+      {
+        "type": "INPUT",
+        "inputType": "text",
+        "id": "text2"
+      }
+    
+  ]
+  

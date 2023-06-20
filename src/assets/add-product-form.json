@@ -1,0 +1,61 @@
+[
+      {
+        "type": "INPUT",
+        "label": "Name",
+        "inputType": "text",
+        "id": "text2",
+        "required": true
+      },
+      {
+        "type": "TEXTAREA",
+        "id": "notes",
+        "label": "Notes",
+        "value":""
+      
+      },  
+      {
+        "type": "SELECT",
+        "label": "Assign",
+        "id":"users",
+        "required": true,
+         "default": null,
+        "options": [
+          {
+            "label": "Hasnain",
+            "value": "Hasnain"
+          },
+          {
+            "label": "Hassan",
+            "value": "Hassan"
+          },
+          {
+            "label": "Qaiser",
+            "value": "Qaiser"
+          }
+        ]
+      },
+      {
+        "type": "SELECT",
+        "label": "Status",
+        "id":"status",
+        "default": null,
+        "required": true,
+        "options": [
+          {
+            "label": "In progress",
+            "value": "inprogress"
+          },
+          {
+            "label": "Complete",
+            "value": "complete"
+          }
+        ]
+      },
+      {
+        "type": "DATEPICKER",
+        "id": "warranty_ends",
+        "label": "Due Date",
+        "placeholder": "Select Date"
+      }
+  ]
+  

@@ -1,0 +1,7 @@
+.submitButton {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    margin-top: 10px;
+    grid-gap: 10px;
+}
