@@ -14,32 +14,7 @@ export class CrudService {
 
   Products$ : BehaviorSubject<IUserForm[]>;
 
-  Products : IUserForm[] = [
-    {
-        id: 1,
-        name: "Hasnain",
-        notes: "tyuhj",
-        users: "ali",
-        status: "complete",
-        warranty_ends: "2023-06-12T07:00:00.000Z"
-    },
-    {
-        id: 2,
-        name: "Hasnain",
-        notes: "tyuhj",
-        users: "ali",
-        status: "complete",
-        warranty_ends: "2023-06-02T07:00:00.000Z"
-    },
-    {
-        id: 3,
-        name: "Hasnain",
-        notes: "tyuhj",
-        users: "ali",
-        status: "complete",
-        warranty_ends: "2023-06-27T07:00:00.000Z" 
-      }
-  ]
+  Products : IUserForm[] = []
 
   constructor() {
     this.Products$ = new BehaviorSubject<IUserForm[]>(this.Products);
@@ -49,6 +24,14 @@ export class CrudService {
    AddProduct(p: IUserForm): void{
     this.Products.push(p);
     this.Products$.next(this.Products);
+    console.log(this.Products, "lll")
    }
 
+   
+   
+   UpdateProduct(p:any): void{
+    console.log(p)
+    this.Products.push(p[0]);
+    this.Products$.next(this.Products);
+   }
 }

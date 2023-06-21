@@ -99,9 +99,10 @@ export class ListProductsComponent implements OnInit, OnDestroy{
     this.appService.Products$.subscribe(data => this.products = data);
     this.products.forEach((customer: any) => (customer.warranty_ends = new Date(<Date>customer.warranty_ends)));
     console.log(this.products, "pp")
-    if(this.products.length > 0){
+
       this.initTable();
-    }
+    
+
 
   }
 
@@ -111,7 +112,8 @@ export class ListProductsComponent implements OnInit, OnDestroy{
     this.ref = this.dialogService.open(AddProductFormComponent, {
       data: {
         bookData: Object.assign({}, e),
-        text: "Update"
+        text: "Update",
+        products: this.products
       },
         header: 'Update a Task',
         width: '40%',

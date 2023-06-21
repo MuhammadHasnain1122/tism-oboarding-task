@@ -45,6 +45,7 @@ export class AddProductFormComponent implements OnInit, OnDestroy{
   formModel: any;
   inputData: any;
   updateButtonText: any;
+  products: any = [];
 
   constructor(private fb: FormBuilder, private appService: CrudService,
     public dfs: DynamicFormService,
@@ -55,6 +56,7 @@ export class AddProductFormComponent implements OnInit, OnDestroy{
     ) {}
 
   ngOnInit() {
+    // console.log(this.config.data?.products, "prod")
     this.updateButtonText =  this.config.data?.text ? this.config.data.text : "save"
     this.inputData = this.config.data?.bookData ? this.config.data.bookData : {}
     this.subscriptions.sink = this.jsonService
@@ -67,12 +69,37 @@ export class AddProductFormComponent implements OnInit, OnDestroy{
   }
 
 
-
   addProduct() {
     if (this.formGroup.valid) {
       console.log(this.formGroup.value, "values")
-      this.appService.AddProduct(this.formGroup.value);
+
+      let id =  Math.floor(Math.random() * 9) + 1;
+      let form = {...this.formGroup.value, id}
+      if(this.config.data?.bookData){
+        // debugger
+        this.appService.Products$.subscribe(data => this.products = data);
+
+        const upd_obj =  this.products.map((obj: any)=> {
+
+          if (obj.id == this.config.data.bookData.id) {
+           obj.name=this.formGroup.value['name'];
+           obj.users=this.formGroup.value['users'];
+           obj.status= this.formGroup.value['status'],
+           obj.warranty_ends =this.formGroup.value['warranty_ends'],
+           obj.notes = this.formGroup.value['notes']
+          }
+          return obj;
+         })
+         
+        //  console.log(upd_obj);
+        // this.appService.AddProduct(upd_obj);
+        this.appService.UpdateProduct(upd_obj)
+      }else {
+        this.appService.AddProduct(form);
+      }
+     
     }
+
     this.formGroup.reset();
     if(this.updateButtonText){
       this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Task Updated' });
