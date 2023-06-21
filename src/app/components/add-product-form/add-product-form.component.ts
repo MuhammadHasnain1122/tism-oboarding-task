@@ -74,10 +74,16 @@ export class AddProductFormComponent implements OnInit, OnDestroy{
       this.appService.AddProduct(this.formGroup.value);
     }
     this.formGroup.reset();
-    this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Record Added' });
+    if(this.updateButtonText){
+      this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Record Updated' });
+
+    }else {
+      this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Record Added' });
+
+    }
     setTimeout(() => {
       this.ref.close('close')
-    }, 1000)
+    }, 500)
   
   }
 

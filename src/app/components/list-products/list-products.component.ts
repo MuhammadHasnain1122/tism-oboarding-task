@@ -149,6 +149,7 @@ deleteObj(e: any) {
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       accept: () => {
+        debugger
           this.products  = this.products.filter((v: any) =>  v.id != e.id)
           this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' });
       },
