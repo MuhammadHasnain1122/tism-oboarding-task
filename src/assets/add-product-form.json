@@ -3,7 +3,7 @@
         "type": "INPUT",
         "label": "Name",
         "inputType": "text",
-        "id": "text2",
+        "id": "name",
         "required": true
       },
       {

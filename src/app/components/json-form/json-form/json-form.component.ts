@@ -29,7 +29,7 @@ export class JsonFormComponent {
     "notes": "e4r5t6y7ui",
     "text": "ertyui",
     "text1": "ertyui",
-    "text2": "wwertyu8i9"
+    "name": "wwertyu8i9"
   }
   
   checked: boolean = false;

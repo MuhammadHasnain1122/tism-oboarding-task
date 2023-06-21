@@ -75,10 +75,10 @@ export class AddProductFormComponent implements OnInit, OnDestroy{
     }
     this.formGroup.reset();
     if(this.updateButtonText){
-      this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Record Updated' });
+      this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Task Updated' });
 
     }else {
-      this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Record Added' });
+      this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'Task Added' });
 
     }
     setTimeout(() => {

@@ -20,7 +20,7 @@
       {
         "type": "INPUT",
         "inputType": "text",
-        "id": "text2"
+        "id": "name"
       }
     
   ]

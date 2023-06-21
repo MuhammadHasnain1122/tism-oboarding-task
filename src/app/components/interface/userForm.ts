@@ -2,7 +2,7 @@ export interface IUserForm {
     id: number;
     notes : string; 
     status : string; 
-    text2 : string; 
+    name : string; 
     users : string;
     warranty_ends: string;
 }

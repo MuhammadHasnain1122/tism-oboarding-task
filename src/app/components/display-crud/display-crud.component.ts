@@ -32,8 +32,8 @@ export class DisplayCrudComponent implements OnDestroy {
 
   show() {
       this.ref = this.dialogService.open(AddProductFormComponent, {
-          header: 'Add a Product',
-          width: '20%',
+          header: 'Add a Task',
+          width: '40%',
           contentStyle: { overflow: 'auto' },
           baseZIndex: 10000,
           maximizable: true

@@ -105,14 +105,16 @@ export class ListProductsComponent implements OnInit, OnDestroy{
 
   }
 
+  
+
   show(e: any) {
     this.ref = this.dialogService.open(AddProductFormComponent, {
       data: {
         bookData: Object.assign({}, e),
-        text: "update"
+        text: "Update"
       },
-        header: 'Update a Product',
-        width: '20%',
+        header: 'Update a Task',
+        width: '40%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
         maximizable: true
@@ -141,6 +143,10 @@ export class ListProductsComponent implements OnInit, OnDestroy{
  
   }
 
+  applyFilter(event: Event) {
+    return (event.target as HTMLInputElement).value;
+    // ... etc...
+}
 
 deleteObj(e: any) {
   this.isDeleted = true;
@@ -151,7 +157,7 @@ deleteObj(e: any) {
       accept: () => {
         debugger
           this.products  = this.products.filter((v: any) =>  v.id != e.id)
-          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' });
+          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Task deleted' });
       },
       reject: (type: any) => {
                   this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
@@ -163,13 +169,13 @@ deleteObj(e: any) {
 initTable() {
   this.col = [
     {
-      data: 'text2',
+      data: 'name',
       title: 'Name',
-      sortingField: 'text2',
+      sortingField: 'name',
       clickable: true,
       cssClass: 'font-weight-bold text-underline',
       visible: true,
-      field: 'text2'
+      field: 'name'
     },
     {
       data: 'users',

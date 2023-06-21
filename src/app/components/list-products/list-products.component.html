@@ -19,16 +19,15 @@
 
  #dt1
  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
- [globalFilterFields]="['text2', 'users', 'status', 'warranty_ends']"
  styleClass="p-datatable-gridlines p-datatable-sm"
  [tableStyle]="{'min-width': '50rem'}">
 
  <ng-template pTemplate="caption">
-    <div class="flex">
+    <div class="headerAlign">
         <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
         <span class="p-input-icon-left ml-auto">
             <i class="pi pi-search"></i>
-            <input pInputText type="text" (input)="dt1.filterGlobal($event, 'contains')" placeholder="Search keyword" />
+            <input pInputText type="text" (input)="dt1.filterGlobal(applyFilter($event), 'contains')" placeholder="Search keyword" />
         </span>
     </div>
 </ng-template>
@@ -47,13 +46,13 @@
     </ng-template>
     <ng-template pTemplate="body"  let-product>
         <tr >
-            <td>{{product.text2}}</td>
+            <td>{{product.name}}</td>
             <td>{{product.users}}</td>
             <td>{{product.status}}</td>
             <td>{{product.warranty_ends | date}}</td>
             <td>{{product.notes}}</td>
 
-         <td>
+         <td class="actions">
                 <button
                 pButton
                 pRipple
