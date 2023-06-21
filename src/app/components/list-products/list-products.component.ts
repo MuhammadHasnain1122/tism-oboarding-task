@@ -106,16 +106,12 @@ export class ListProductsComponent implements OnInit, OnDestroy{
   }
 
   show(e: any) {
-    // this.checked = true;
-    // this.getProductObj = e;
-    // debugger
-    // this.checked = true;
     this.ref = this.dialogService.open(AddProductFormComponent, {
       data: {
         bookData: Object.assign({}, e),
-        id: 1
+        text: "update"
       },
-        header: 'Select a Product',
+        header: 'Update a Product',
         width: '20%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -144,7 +140,6 @@ export class ListProductsComponent implements OnInit, OnDestroy{
       this.checked = true;
  
   }
-
 
 
 deleteObj(e: any) {

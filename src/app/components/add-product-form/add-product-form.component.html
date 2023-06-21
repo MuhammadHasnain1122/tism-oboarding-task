@@ -1,6 +1,6 @@
 
 
-<div class="card " *ngIf="!isUpdate">
+<div class="card " >
 <form >
     <dynamic-primeng-form [group]="formGroup" [model]="formModel"></dynamic-primeng-form>
 </form>
@@ -8,7 +8,7 @@
 <div class="submitButton">
 
 
-<p-button label="Submit" styleClass="p-button-success"
+<p-button label={{updateButtonText}} styleClass="p-button-success"
 (click)="addProduct()"
 [disabled]="this.formGroup.invalid"
 ></p-button>

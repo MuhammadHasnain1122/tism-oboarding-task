@@ -14,6 +14,7 @@ import { MessageService } from 'primeng/api';
 import { ToastsService } from '../ToastService';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 
 @Component({
@@ -28,9 +29,10 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     DialogModule,
     ToastModule,
-    ButtonModule
+    ButtonModule,
+    DynamicDialogModule
   ],
-  providers: [DialogService, MessageService, ToastsService, DynamicFormService, DynamicDialogConfig]
+  providers: [DialogService, MessageService, ToastsService, DynamicFormService]
 })
 
 export class AddProductFormComponent implements OnInit, OnDestroy{
@@ -40,33 +42,25 @@ export class AddProductFormComponent implements OnInit, OnDestroy{
   dynamicFormGroup!: FormGroup;
   formGroup!: UntypedFormGroup;
   @Input() model: any;
-  @Input()  getObj: any;
   formModel: any;
-  checked: boolean = false;
-  @Input()  isUpdate: any;
-  visible: boolean = false;
-  duplicateObj: any;
-
+  inputData: any;
+  updateButtonText: any;
 
   constructor(private fb: FormBuilder, private appService: CrudService,
     public dfs: DynamicFormService,
     private messageService: MessageService, 
     public ref: DynamicDialogRef,
     private jsonService: JsonService,
-    public config: DynamicDialogConfig) {}
+    public config: DynamicDialogConfig,
+    ) {}
 
   ngOnInit() {
-    console.log(this.getObj, "ll")
-    console.log(this.isUpdate, "kkk")
-
-   console.log( this.config.data, "okat");
-  
-
-
+    this.updateButtonText =  this.config.data?.text ? this.config.data.text : "save"
+    this.inputData = this.config.data?.bookData ? this.config.data.bookData : {}
     this.subscriptions.sink = this.jsonService
       .getUsersForm()
       .subscribe((formModelJson) => {
-    const formModel = assignValues(formModelJson, this.getObj);
+    const formModel = assignValues(formModelJson, this.inputData);
     this.formModel = this.dfs.fromJSON(formModel);
     this.formGroup = this.dfs.createFormGroup(this.formModel);
       });
@@ -84,18 +78,7 @@ export class AddProductFormComponent implements OnInit, OnDestroy{
     setTimeout(() => {
       this.ref.close('close')
     }, 1000)
- 
   
-  }
-
-
-  update(){
-    if (this.formGroup.valid) {
-      console.log(this.formGroup.value, "values")
-      this.appService.AddProduct(this.formGroup.value);
-    }
-    this.formGroup.reset();
-    this.ref.close('close')
   }
 
     

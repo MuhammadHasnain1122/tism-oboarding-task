@@ -16,7 +16,6 @@ export class CrudService {
 
   Products : IUserForm[] = [
     {
-        id: 1,
         text2: "Hasnain",
         notes: "tyuhj",
         users: "premium",
@@ -24,7 +23,6 @@ export class CrudService {
         warranty_ends: "2023-06-12T07:00:00.000Z"
     },
     {
-        id: 2,
         text2: "Hasnain",
         notes: "tyuhj",
         users: "premium",
@@ -32,7 +30,6 @@ export class CrudService {
         warranty_ends: "2023-06-02T07:00:00.000Z"
     },
     {
-        id: 3,
         text2: "Hasnain",
         notes: "tyuhj",
         users: "premium",
