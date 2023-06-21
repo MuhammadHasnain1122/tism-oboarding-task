@@ -19,3 +19,21 @@ Save
   <h5>{{this.formGroup?.value?.text1}}</h5>
   <h5>{{this.formGroup?.value?.text2}}</h5>
 </div>
+<dynamic-primeng-form [group]="formGroup" [model]="formModel"></dynamic-primeng-form>
+
+
+<button
+class="btn btn-info waves-effect waves-light m-r-5 btn-round"
+type="button"
+(click)="save()"
+>
+Save
+</button>
+
+<div *ngIf="checked">
+  <h1>Form Values</h1>
+  <h5>{{this.formGroup?.value?.notes}}</h5>
+  <h5>{{this.formGroup?.value?.text}}</h5>
+  <h5>{{this.formGroup?.value?.text1}}</h5>
+  <h5>{{this.formGroup?.value?.text2}}</h5>
+</div>

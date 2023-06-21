@@ -31,6 +31,7 @@ export class JsonFormComponent {
     "text1": "ertyui",
     "text2": "wwertyu8i9"
   }
+  
   checked: boolean = false;
 
 
