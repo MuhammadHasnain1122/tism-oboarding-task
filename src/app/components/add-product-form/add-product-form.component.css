@@ -5,6 +5,7 @@
     margin-top: 10px;
     grid-gap: 10px;
 }
+
 .dialogue {
     display: flex;
     flex-direction: column;

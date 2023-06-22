@@ -24,14 +24,26 @@ export class CrudService {
    AddProduct(p: IUserForm): void{
     this.Products.push(p);
     this.Products$.next(this.Products);
-    console.log(this.Products, "lll")
    }
 
    
-   
    UpdateProduct(p:any): void{
-    console.log(p)
-    this.Products.push(p[0]);
+    this.Products.filter((v: any) => {
+      if(v.id == p.id){
+         this.Products.pop();
+      }
+    })
+    this.Products.push(p);
     this.Products$.next(this.Products);
+   }
+
+
+   deleteTask(obj: any){
+    this.Products.filter((v: any) => {
+      if(v.id == obj.id){
+        this.Products.pop();
+        this.Products$.next(this.Products);
+      }
+    })
    }
 }

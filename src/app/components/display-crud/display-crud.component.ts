@@ -11,7 +11,6 @@ import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-display-crud',
   templateUrl: './display-crud.component.html',
-  styleUrls: ['./display-crud.component.css'],
   standalone: true,
   imports: [
     ToastModule,

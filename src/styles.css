@@ -6,3 +6,7 @@
 .ui-inputtext {
   width: 100%;
 }
+
+.p-datepicker {
+  top: -380px !important;
+}
