@@ -9,6 +9,8 @@ import {TableModule} from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'primeng/toast';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ToastModule } from 'primeng/toast';
     TableModule,
     MultiSelectModule,
     BrowserAnimationsModule,
-
+    InputTextModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

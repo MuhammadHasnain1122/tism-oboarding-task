@@ -18,6 +18,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, ConfirmEventType } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @Component({
@@ -35,7 +36,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     ConfirmDialogModule,
     ToastModule,
-    InputTextModule
+    InputTextModule,
   ],
   providers: [DialogService, MessageService, DynamicFormService, ConfirmationService],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -54,8 +55,6 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   isData: boolean = false;
   private subscriptions = new SubSink();
   totalRecords: number = 0;
-  datasource: any;
-
   public formData: any;
   dynamicFormGroup!: FormGroup;
   formGroup!: UntypedFormGroup;
@@ -79,7 +78,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     emptyMessage: 'No records found',
   };
 
-  @ViewChild('dt') private dtElement: Table | undefined;
+  @ViewChild('dt') private dtElement!: Table;
 
 
   constructor(public appService: taskService,
@@ -95,7 +94,10 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     this.allData = this.appService.Products$
     this.appService.Products$.subscribe(data => this.products = data);
     this.products.forEach((customer: any) => (customer.warranty_ends = new Date(<Date>customer.warranty_ends)));
+  
+  
     this.initTable();
+  
   }
 
   setNewUserName (userName : string): void {
@@ -145,7 +147,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   deleteObj(e: any) {
     this.isDeleted = true;
     this.confirmationService.confirm({
-      message: 'Do you want to delete this record?',
+      message: 'Do you want to delete this task?',
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       accept: () => {

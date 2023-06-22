@@ -22,7 +22,9 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -30,6 +32,7 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
     "enableIvy": true,
-    "strictDomEventTypes": false
+    "strictDomEventTypes": false,
+    "strictPropertyInitialization": false,
   }
 }
