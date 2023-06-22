@@ -64,8 +64,6 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   checked: boolean = false;
   getProductObj: any;
   isDeleted: any;
-  data:any = [];
-
   activityValues: number[] = [0, 100];
 
 
@@ -81,14 +79,15 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     emptyMessage: 'No records found',
   };
 
-  @ViewChild("dt1") private tableRef: Table | undefined;
+  @ViewChild('dt') private dtElement: Table | undefined;
 
 
   constructor(public appService: taskService,
     public dfs: DynamicFormService,
     public jsonService: JsonService,
     public dialogService: DialogService,
-    private confirmationService: ConfirmationService, private messageService: MessageService) { }
+    private confirmationService: ConfirmationService, 
+    private messageService: MessageService) { }
 
   ref: any = DynamicDialogRef;
 
