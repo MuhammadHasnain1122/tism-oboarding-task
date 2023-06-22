@@ -9,8 +9,8 @@ import { Table } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-display-crud',
-  templateUrl: './display-crud.component.html',
+  selector: 'app-display-table',
+  templateUrl: './display-table.component.html',
   standalone: true,
   imports: [
     ToastModule,
@@ -21,7 +21,7 @@ import { ToastModule } from 'primeng/toast';
   ],
   providers: [DialogService, MessageService, DynamicDialogRef]
 })
-export class DisplayCrudComponent implements OnDestroy {
+export class DisplayTable implements OnDestroy {
   @ViewChild("Table") private tableRef: Table | undefined;
 
   constructor(public dialogService: DialogService, public messageService: MessageService,

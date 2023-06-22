@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
-import { CrudService } from '../service/crudService';
+import { taskService } from '../service/taskService';
 import { CommonModule } from '@angular/common';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -46,7 +46,7 @@ export class AddProductFormComponent implements OnInit, OnDestroy {
   updateButtonText: any;
   products: any = [];
 
-  constructor(private fb: FormBuilder, private appService: CrudService,
+  constructor(private fb: FormBuilder, private appService: taskService,
     public dfs: DynamicFormService,
     private messageService: MessageService,
     public ref: DynamicDialogRef,

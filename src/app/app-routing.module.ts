@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DisplayCrudComponent } from './components/display-crud/display-crud.component';
+import { DisplayTable } from './components/display-components/display-table.component';
 
 const routes: Routes = [
-  { path: '', component: DisplayCrudComponent }
+  { path: '', component: DisplayTable }
 ];
 
 @NgModule({

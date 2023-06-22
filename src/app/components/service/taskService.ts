@@ -6,7 +6,7 @@ import { taskForm } from '../interface/Taskform';
   providedIn: 'root'
 })
 
-export class CrudService {
+export class taskService {
   
   Products$ : BehaviorSubject<taskForm[]>;
   Products : taskForm[] = []

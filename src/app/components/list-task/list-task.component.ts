@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, PipeTransform, Pipe, ViewChild, SimpleChanges, Input } from '@angular/core';
 import { taskForm } from '../interface/Taskform';
 import { Observable, Subscription, map } from 'rxjs';
-import { CrudService } from '../service/crudService';
+import { taskService } from '../service/taskService';
 import { CommonModule } from '@angular/common'
 import { Table, TableModule } from 'primeng/table';
 import { LazyLoadEvent, MenuItem, MessageService } from 'primeng/api';
@@ -84,7 +84,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   @ViewChild("dt1") private tableRef: Table | undefined;
 
 
-  constructor(public appService: CrudService,
+  constructor(public appService: taskService,
     public dfs: DynamicFormService,
     public jsonService: JsonService,
     public dialogService: DialogService,
