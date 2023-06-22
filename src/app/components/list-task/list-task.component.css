@@ -1,10 +1,9 @@
 .actions {
     display: flex;
-    justify-content: space-around;
+    gap: 12px;
 }
 
 .headerAlign {
     display: flex;
     justify-content: space-between;
 }
-

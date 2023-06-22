@@ -1,47 +1,51 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from '../interface/product';
 import { BehaviorSubject } from 'rxjs';
-import { IUserForm } from '../interface/userForm';
+import { taskForm } from '../interface/Taskform';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CrudService {
-  pipe(arg0: any): any {
-    throw new Error('Method not implemented.');
-  }
+  
+  Products$ : BehaviorSubject<taskForm[]>;
+  Products : taskForm[] = []
 
-  Products$ : BehaviorSubject<IUserForm[]>;
-
-  Products : IUserForm[] = []
 
   constructor() {
-    this.Products$ = new BehaviorSubject<IUserForm[]>(this.Products);
+    this.Products$ = new BehaviorSubject<taskForm[]>(this.Products);
    }
 
 
-   AddProduct(p: IUserForm): void{
+   /**
+    * 
+    * @param object this function use for adding task
+    */
+   addTask(p: taskForm): void{
     this.Products.push(p);
     this.Products$.next(this.Products);
    }
 
    
-   UpdateProduct(p:any): void{
-    this.Products.filter((v: any) => {
-      if(v.id == p.id){
-         this.Products.pop();
-      }
-    })
+   /**
+    * 
+    * @param Object this function use for updating task
+    */
+   updateTask(p:any): void{
+    this.Products = this.Products.filter(v => v.id != p.id)
     this.Products.push(p);
     this.Products$.next(this.Products);
    }
 
-
+   
+   /**
+    * 
+    * @param Object this function use for deleting a task
+    */
    deleteTask(obj: any){
     this.Products.filter((v: any) => {
       if(v.id == obj.id){
-        this.Products.pop();
+       this.Products = this.Products.filter(v => v.id != obj.id)
         this.Products$.next(this.Products);
       }
     })

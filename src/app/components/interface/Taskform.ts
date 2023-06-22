@@ -1,4 +1,4 @@
-export interface IUserForm {
+export interface taskForm {
     id: number;
     notes : string; 
     status : string; 

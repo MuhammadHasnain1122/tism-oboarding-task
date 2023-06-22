@@ -1,20 +1,18 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, PipeTransform, Pipe, ViewChild, SimpleChanges, Input } from '@angular/core';
-import { IProduct } from '../interface/product';
-import { IUserForm } from '../interface/userForm';
+import { taskForm } from '../interface/Taskform';
 import { Observable, Subscription, map } from 'rxjs';
 import { CrudService } from '../service/crudService';
 import { CommonModule } from '@angular/common'
 import { Table, TableModule } from 'primeng/table';
 import { LazyLoadEvent, MenuItem, MessageService } from 'primeng/api';
-import { PipesModule } from '../pipe/pipe.module';
 import { SubSink } from 'subsink';
 import { assignValues } from '../service/formvalidationService';
 import { DynamicFormService } from '@ng-dynamic-forms/core';
-import { JsonService } from 'src/app/json.service';
+import { JsonService } from 'src/app/jsonform.service';
 import { FormGroup, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { AddProductFormComponent } from '../add-product-form/add-product-form.component';
+import { AddProductFormComponent } from '../add-task/add-task-form.component';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, ConfirmEventType } from 'primeng/api';
@@ -23,14 +21,13 @@ import { InputTextModule } from 'primeng/inputtext';
 
 
 @Component({
-  selector: 'app-list-products',
-  templateUrl: './list-products.component.html',
-  styleUrls: ['./list-products.component.css'],
+  selector: 'app-list-task',
+  templateUrl: './list-task.component.html',
+  styleUrls: ['./list-task.component.css'],
   standalone: true,
   imports: [
     CommonModule,
     TableModule,
-    PipesModule,
     DynamicFormsPrimeNGUIModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,13 +44,13 @@ import { InputTextModule } from 'primeng/inputtext';
 export class ListProductsComponent implements OnInit, OnDestroy {
 
 
-  products: any = Observable<IUserForm[]>;
+  products: any = Observable<taskForm[]>;
   col: any;
   movies$: any;
   selectAll: any;
   loading: boolean = false
   selectedCustomers: any;
-  allData: any = Observable<IUserForm[]>;
+  allData: any = Observable<taskForm[]>;
   isData: boolean = false;
   private subscriptions = new SubSink();
   totalRecords: number = 0;
@@ -67,6 +64,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   checked: boolean = false;
   getProductObj: any;
   isDeleted: any;
+  data:any = [];
 
   activityValues: number[] = [0, 100];
 
@@ -100,6 +98,10 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     this.products.forEach((customer: any) => (customer.warranty_ends = new Date(<Date>customer.warranty_ends)));
     this.initTable();
   }
+
+  setNewUserName (userName : string): void {
+    console.log('setNewUserName', userName)
+}
 
 
   show(e: any) {

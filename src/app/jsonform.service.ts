@@ -9,11 +9,6 @@ import { Injectable } from '@angular/core';
   export class JsonService {
     constructor(public http: HttpClient) {}
 
-    getUpdateTaskNotesForm() {
-        return this.http.get<any[]>('/assets/update-task-notes.json');
-      }
-
-
     getUsersForm() {
         return this.http.get<any[]>('/assets/add-product-form.json');
       }
