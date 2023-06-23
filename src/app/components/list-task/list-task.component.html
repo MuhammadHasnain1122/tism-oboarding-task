@@ -7,22 +7,13 @@
     </tbody>
 </table> 
 
-
  <p-table 
  [columns]="col" 
  [value]="products"
- [lazy]="pTableOptions.lazy"
- [reorderableColumns]="pTableOptions.reorderableColumns"
- [rows]="pTableOptions.rows"
- [rowsPerPageOptions]="pTableOptions.rowsPerPageOptions"
- dataKey="id"
- [paginator]="pTableOptions.paginator"
- currentPageReportTemplate="pTableOptions.currentPageReportTemplate"
- [globalFilterFields]="['name','users','status', 'warranty_ends']"
-  
+ [scrollable]="true" 
+ scrollHeight="400px"
+ [globalFilterFields]="['name', 'users', 'status']"
  #dt
- styleClass="p-datatable-gridlines p-datatable-sm"
- [tableStyle]="{'min-width': '50rem'}"
 >
 
  <ng-template pTemplate="caption">

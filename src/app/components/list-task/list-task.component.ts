@@ -47,13 +47,8 @@ export class ListProductsComponent implements OnInit, OnDestroy {
 
   products: any = Observable<taskForm[]>;
   col: any;
-  movies$: any;
-  selectAll: any;
   loading: boolean = false
-  selectedCustomers: any;
   allData: any = Observable<taskForm[]>;
-  isData: boolean = false;
-  private subscriptions = new SubSink();
   totalRecords: number = 0;
   public formData: any;
   dynamicFormGroup!: FormGroup;
@@ -64,7 +59,6 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   getProductObj: any;
   isDeleted: any;
   activityValues: number[] = [0, 100];
-
 
   pTableOptions = {
     rows: 10,
@@ -85,7 +79,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     public dfs: DynamicFormService,
     public jsonService: JsonService,
     public dialogService: DialogService,
-    private confirmationService: ConfirmationService, 
+    private confirmationService: ConfirmationService,
     private messageService: MessageService) { }
 
   ref: any = DynamicDialogRef;
@@ -94,15 +88,9 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     this.allData = this.appService.Products$
     this.appService.Products$.subscribe(data => this.products = data);
     this.products.forEach((customer: any) => (customer.warranty_ends = new Date(<Date>customer.warranty_ends)));
-  
-  
-    this.initTable();
-  
-  }
 
-  setNewUserName (userName : string): void {
-    console.log('setNewUserName', userName)
-}
+    this.initTable();
+  }
 
 
   show(e: any) {
@@ -130,19 +118,6 @@ export class ListProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getSortingField(col: any) {
-    console.log(col)
-    return col.sortingField || col.data;
-  }
-
-  getObj(e: any) {
-    this.getProductObj = e;
-    this.checked = true;
-  }
-
-  applyFilter(event: Event) {
-    return (event.target as HTMLInputElement).value;
-  }
 
   deleteObj(e: any) {
     this.isDeleted = true;
