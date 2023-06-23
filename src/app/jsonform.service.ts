@@ -10,6 +10,6 @@ import { Injectable } from '@angular/core';
     constructor(public http: HttpClient) {}
 
     getUsersForm() {
-        return this.http.get<any[]>('/assets/add-product-form.json');
+        return this.http.get<any[]>('/assets/add-task-form.json');
       }
   }
