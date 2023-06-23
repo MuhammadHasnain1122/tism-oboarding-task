@@ -42,10 +42,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ListProductsComponent implements OnInit, OnDestroy {
+export class ListtasksComponent implements OnInit, OnDestroy {
 
 
-  products: any = Observable<taskForm[]>;
+  tasks: any = Observable<taskForm[]>;
   col: any;
   loading: boolean = false
   allData: any = Observable<taskForm[]>;
@@ -85,9 +85,9 @@ export class ListProductsComponent implements OnInit, OnDestroy {
   ref: any = DynamicDialogRef;
 
   ngOnInit() {
-    this.allData = this.appService.Products$
-    this.appService.Products$.subscribe(data => this.products = data);
-    this.products.forEach((customer: any) => (customer.warranty_ends = new Date(<Date>customer.warranty_ends)));
+    this.allData = this.appService.Tasks$
+    this.appService.Tasks$.subscribe(data => this.tasks = data);
+    this.tasks.forEach((customer: any) => (customer.warranty_ends = new Date(<Date>customer.warranty_ends)));
 
     this.initTable();
   }
@@ -98,7 +98,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
       data: {
         bookData: Object.assign({}, e),
         text: "Update",
-        products: this.products
+        tasks: this.tasks
       },
       header: 'Update a Task',
       width: '40%',
@@ -109,7 +109,7 @@ export class ListProductsComponent implements OnInit, OnDestroy {
 
     this.ref.onClose.subscribe((product: any) => {
       if (product) {
-        this.messageService.add({ severity: 'info', summary: 'Product Selected', detail: product.name });
+        this.messageService.add({ severity: 'info', summary: 'Task Selected', detail: product.name });
       }
     });
 

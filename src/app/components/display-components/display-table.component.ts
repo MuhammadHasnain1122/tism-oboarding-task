@@ -1,6 +1,6 @@
 import { Component , OnDestroy, ViewChild } from '@angular/core';
 import { AddProductFormComponent } from '../add-task/add-task-form.component';
-import { ListProductsComponent } from '../list-task/list-task.component';
+import { ListtasksComponent } from '../list-task/list-task.component';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
@@ -15,7 +15,7 @@ import { ToastModule } from 'primeng/toast';
   imports: [
     ToastModule,
     AddProductFormComponent,
-    ListProductsComponent,
+    ListtasksComponent,
     DynamicFormsPrimeNGUIModule,
     ButtonModule,
   ],
@@ -40,7 +40,7 @@ export class DisplayTable implements OnDestroy {
 
       this.ref.onClose.subscribe((product: any) => {
           if (product) {
-              this.messageService.add({ severity: 'info', summary: 'Product Selected', detail: product.name });
+              this.messageService.add({ severity: 'info', summary: 'Task Selected', detail: product.name });
           }
       });
 

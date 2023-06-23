@@ -8,12 +8,12 @@ import { taskForm } from '../interface/Taskform';
 
 export class taskService {
   
-  Products$ : BehaviorSubject<taskForm[]>;
-  Products : taskForm[] = []
+ Tasks$ : BehaviorSubject<taskForm[]>;
+  Tasks : taskForm[] = []
 
 
   constructor() {
-    this.Products$ = new BehaviorSubject<taskForm[]>(this.Products);
+   this.Tasks$ = new BehaviorSubject<taskForm[]>(this.Tasks);
    }
 
 
@@ -22,8 +22,8 @@ export class taskService {
     * @param object this function use for adding task
     */
    addTask(p: taskForm): void{
-    this.Products.push(p);
-    this.Products$.next(this.Products);
+    this.Tasks.push(p);
+   this.Tasks$.next(this.Tasks);
    }
 
    
@@ -32,9 +32,9 @@ export class taskService {
     * @param Object this function use for updating task
     */
    updateTask(p:any): void{
-    this.Products = this.Products.filter(v => v.id != p.id)
-    this.Products.push(p);
-    this.Products$.next(this.Products);
+    this.Tasks = this.Tasks.filter(v => v.id != p.id)
+    this.Tasks.push(p);
+   this.Tasks$.next(this.Tasks);
    }
 
    
@@ -43,10 +43,10 @@ export class taskService {
     * @param Object this function use for deleting a task
     */
    deleteTask(obj: any){
-    this.Products.filter((v: any) => {
+    this.Tasks.filter((v: any) => {
       if(v.id == obj.id){
-       this.Products = this.Products.filter(v => v.id != obj.id)
-        this.Products$.next(this.Products);
+       this.Tasks = this.Tasks.filter(v => v.id != obj.id)
+       this.Tasks$.next(this.Tasks);
       }
     })
    }
